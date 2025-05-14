@@ -1,6 +1,6 @@
 # Workshop on Engineering Design Optimization using MATLAB&reg; and Python&trade;
 
-[![View Courseware on Finite Element Methods on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/125135-courseware-on-finite-element-methods) or [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://insidelabs-git.mathworks.com/ww-edu-technical/workshops/workshop-on-computer-aided-design-and-optimization-with-pythonocc-and-matlab/-/blob/main/Engineering-Design-Optimization-using-MATLAB-and-Python-R25a.prj)
+[![View Courseware on Finite Element Methods on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/125135-courseware-on-finite-element-methods) or [![Open in MATLAB&reg Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://insidelabs-git.mathworks.com/ww-edu-technical/workshops/workshop-on-computer-aided-design-and-optimization-with-pythonocc-and-matlab/-/blob/main/Engineering-Design-Optimization-using-MATLAB-and-Python-R25a.prj)
 
 ## Description ##
 
@@ -39,7 +39,7 @@ This example focuses on the use of the [Partial Differential Equation Toolbox&tr
 - **``Example3.mlx``**\
 This example introduces the MATLAB&reg; PythonOCC Interoperability. Using sliders and other interacting elements of the MATLAB&reg; Live Editor, the example demonstrates how the designer can modify the geometry of the motorcycle swingarm by directly calling PythonOCC APIs from within MATLAB&reg;
 
-<img src="images/Example%203%20Geometry%20Modification.gif" alt="MATLAB Python Interoperability" width="75%">
+<img src="images/Example%203%20Geometry%20Modification.gif" alt="MATLAB&reg Python&trade Interoperability" width="75%">
 <p>&nbsp;</p>
 
 - **``Example4.mlx``**\
@@ -51,7 +51,7 @@ In this example, function [``patternsearch``](https://www.mathworks.com/help/gad
 - **``Example5.mlx``**\
 This example summarizes the complete workflow into a comprehensive MATLAB&reg; App using the MATLAB&reg; App Designer.
 
-<img src="images/Optimize%20MATLAB%20App%20(Edge%202).gif" alt="Swingarm Optimization MATLAB App" width="75%">
+<img src="images/Optimize%20MATLAB%20App%20(Edge%202).gif" alt="Swingarm Optimization MATLAB&reg App" width="75%">
 <p>&nbsp;</p>
 
 ## Concepts
@@ -64,10 +64,14 @@ All engineering disciplines, such as, civil engineers, mechanical engineers, etc
 Firstly, open the project file ``Engineering-Design-Optimization-using-MATLAB-and-Python-R25a.prj`` to have all the folder dependencies resolved and PythonOCC installed. Then, open Live Script **Main.mlx**, go to Section **Quick guide**, select any of the desirable Live Scripts from the list, and hit Run!
 
 ## Unit-testing framework
-To run the unit tests for this courseware, just type the following commands in the Command Window of MATLAB&reg;\
+To interactively run the associated unit tests of this MATLAB&reg Project, the [MATLAB&reg Test Manager](https://www.mathworks.com/help/matlab-test/ref/matlabtestmanager-app.html) from the Project Tools in the project toolstrip can be leveraged, see the following screenshot:
+<img src="images/MATLAB%20Test%20Manager.png" alt="MATLAB&reg Test Manager" width="75%">
+<p>&nbsp;</p>
+
+Alternatively, the unit tests for this courseware can be executed programmatically by using the following commands in the Command Window of MATLAB&reg;\
 ``>> suite = matlab.unittest.TestSuite.fromProject("Engineering-Design-Optimization-using-MATLAB-and-Python-R25a.prj");``\
 ``>> run(suite)``\
-Alternatively, start the project and then run the file ``main_unitTests.mlx``
+start the project and then run the file ``main_unitTests.mlx``
 
 ## Release last tested
 R2024b
