@@ -71,7 +71,6 @@ To interactively run the associated unit tests of this MATLAB&reg; Project, the 
 Alternatively, the unit tests for this courseware can be executed programmatically by using the following commands in the Command Window of MATLAB&reg;\
 ``>> suite = matlab.unittest.TestSuite.fromProject("Engineering-Design-Optimization-using-MATLAB-and-Python.prj");``\
 ``>> run(suite)``\
-start the project and then run the file ``main_unitTests.mlx``
 
 ## Release last tested
 R2024b
