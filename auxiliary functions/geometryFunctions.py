@@ -853,6 +853,14 @@ def writeGeometryToFile(fileName, shape):
         >>> writeGeometryToFile('./cadModels/swingarm.igs', solidShape)
     """
 
+    # Ensure the output directory exists
+    outputDir = os.path.dirname(fileName)
+    if outputDir and not os.path.exists(outputDir):
+        try:
+            os.makedirs(outputDir, exist_ok=True)
+        except Exception as e:
+            raise OSError(f"Could not create output directory '{outputDir}': {e}")
+
     # Determine the file extension
     _, fileExtension = os.path.splitext(fileName)
     

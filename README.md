@@ -1,93 +1,95 @@
-# Workshop: Engineering Design Optimization using MATLAB and Python
+# Workshop on Engineering Design Optimization using MATLAB&reg; and Python&trade;
 
+[![View Courseware on Finite Element Methods on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/125135-courseware-on-finite-element-methods) or [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://insidelabs-git.mathworks.com/ww-edu-technical/workshops/workshop-on-computer-aided-design-and-optimization-with-pythonocc-and-matlab/-/blob/main/Engineering-Design-Optimization-using-MATLAB-and-Python-R25a.prj)
 
+## Description ##
 
-## Getting started
+This workshop on Engineering Design Optimization using [MATLAB&reg;](https://www.mathworks.com/products/matlab.html) and Python addresses the shape optimization of mechanical components for strength. Python&trade; package PythonOCC [1] (Retrieved from [`https://github.com/tpaviot/pythonocc-core`](https://github.com/tpaviot/pythonocc-core)), which is under the LPGLv3 license, is used to read-in and manipulate geometries, whereas MATLAB&reg; is used for the structural analysis and optimization.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+This interactive workshop uses extensively the [MATLAB&reg;](https://www.mathworks.com/products/matlab.html) [Live&reg; Editor](https://de.mathworks.com/products/matlab/live-editor.html), the [Partial Differential Equation Toolbox&trade;](https://de.mathworks.com/products/pde.html), and the [Global Optimization Toolbox&trade;](https://de.mathworks.com/products/global-optimization.html) for the development and the presentation. More specifically, the [Visualize PDE Results Live Task](https://www.mathworks.com/help/pde/ug/visualizepderesults.html) is used for the visualization of the von Mises stresses and the [Optimize Live Task](https://www.mathworks.com/help/matlab/math/optimize-live-editor-matlab.html) is used for the shape optimization for strength.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Owner/s
+Andreas Apostolatos, PhD ([`aapostol@mathworks.com`](mailto:aapostol@mathworks.com))\
+María Elena Gavilán Alfonso ([`mgavilan@mathworks.com`](mailto:mgavilan@mathworks.com))
 
-## Add your files
+## Contents
+The repository contains the following Live Scripts and folders:
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- **``Engineering-Design-Optimization-using-MATLAB-and-Python.prj``**\
+This is the MATLAB&reg; project file which sets up all necessary dependencies including the installation of PythonOCC
 
-```
-cd existing_repo
-git remote add origin https://insidelabs-git.mathworks.com/ww-edu-technical/workshops/workshop-on-computer-aided-design-and-optimization-with-pythonocc-and-matlab.git
-git branch -M main
-git push -uf origin main
-```
+- **``Main.mlx``**\
+This is a reference document that can be used to navigate to the rest of the Live Scripts in the repository
 
-## Integrate with your tools
+- **``main_unitTests.mlx``**\
+This is the Live Script that executes the unit tests
 
-- [ ] [Set up project integrations](https://insidelabs-git.mathworks.com/ww-edu-technical/workshops/workshop-on-computer-aided-design-and-optimization-with-pythonocc-and-matlab/-/settings/integrations)
+- **``Example1.mlx``**\
+This example highlights the necessary workflows for importing standard *Computer-Aided Design* (CAD) file formats (e.g. ``IGES``, ``STEP``-files) in MATLAB&reg;
 
-## Collaborate with your team
+![Solid swingarm geometry](images/Example%201%20Solid%20Swingarm%20Geometry.png)
+<p>&nbsp;</p>
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+- **``Example2.mlx``**\
+This example focuses on the use of the [Partial Differential Equation Toolbox&trade;](https://www.mathworks.com/products/pde.html) for the prediction of the mechanical behavior of a motorcycle swingarm under usual loading conditions. Moreover, this example demonstrates how the cost function for strength can be formulated leveraging appropriate *Application Programming Interfaces* (APIs) from the Partial Differential Equation Toolbox. The [Visualize PDE Results Live Task](https://www.mathworks.com/help/pde/ug/visualizepderesults.html) is used for the visualization of the von Mises stresses across the component
 
-## Test and Deploy
+<img src="images/Example%202%20von%20Mises%20Stresses.png" alt="von Mises stresses" width="30%">
+<p>&nbsp;</p>
 
-Use the built-in continuous integration in GitLab.
+- **``Example3.mlx``**\
+This example introduces the MATLAB&reg; PythonOCC Interoperability. Using sliders and other interacting elements of the MATLAB&reg; Live Editor, the example demonstrates how the designer can modify the geometry of the motorcycle swingarm by directly calling PythonOCC APIs from within MATLAB&reg;
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+<img src="images/Example%203%20Geometry%20Modification.gif" alt="MATLAB Python Interoperability" width="75%">
+<p>&nbsp;</p>
 
-***
+- **``Example4.mlx``**\
+In this example, function [``patternsearch``](https://www.mathworks.com/help/gads/patternsearch.html) through the [Optimize Live Task](https://www.mathworks.com/help/matlab/math/optimize-live-editor-matlab.html) is leveraged to perform shape optimization of the motorcycle swingar. A selected sharp edge is filtered and then the optimization is performed for reduction of the strain energy aiming to lower the local stress concentration and increase structural strength of the component
 
-# Editing this README
+<img src="images/Optimize%20Live%20Task%20(Edge%202).gif" alt="Optimize Live Task" width="100%">
+<p>&nbsp;</p>
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- **``Example5.mlx``**\
+This example summarizes the complete workflow into a comprehensive MATLAB&reg; App using the MATLAB&reg; App Designer.
 
-## Suggestions for a good README
+<img src="images/Optimize%20MATLAB%20App%20(Edge%202).gif" alt="Swingarm Optimization MATLAB App" width="75%">
+<p>&nbsp;</p>
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## Concepts
+Finite element analysis, [MATLAB&reg; Python&trade; interoperability](https://www.mathworks.com/products/matlab/matlab-and-python.html), modeling via *Computer-Aided Design* (CAD), CAD import, programmatic CAD manipulation, shape optimization for strength, motorcycle swingarm, [Visualize PDE Results Live Task](https://www.mathworks.com/help/pde/ug/visualizepderesults.html), [Optimize Live Task](https://www.mathworks.com/help/matlab/math/optimize-live-editor-matlab.html), [MATLAB&reg; App Designer](https://www.mathworks.com/products/matlab/app-designer.html), [unit-testing](https://www.mathworks.com/help/matlab/matlab_prog/ways-to-write-unit-tests.html), [MATLAB&reg; Projects](https://www.mathworks.com/help/matlab/projects.html), [Git-integration](https://www.mathworks.com/help/matlab/matlab_prog/set-up-git-source-control.html)
 
-## Name
-Choose a self-explaining name for your project.
+## Suggested Audience
+All engineering disciplines, such as, civil engineers, mechanical engineers, etc.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Workflow
+Firstly, open the project file ``Engineering-Design-Optimization-using-MATLAB-and-Python-R25a.prj`` to have all the folder dependencies resolved and PythonOCC installed. Then, open Live Script **Main.mlx**, go to Section **Quick guide**, select any of the desirable Live Scripts from the list, and hit Run!
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## Unit-testing framework
+To run the unit tests for this courseware, just type the following commands in the Command Window of MATLAB&reg;\
+``>> suite = matlab.unittest.TestSuite.fromProject("Engineering-Design-Optimization-using-MATLAB-and-Python.prj");``\
+``>> run(suite)``\
+Alternatively, start the project and then run the file ``main_unitTests.mlx``
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## Release last tested
+R2024b
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## TODO
+- Allow user to select where to download the Miniforge executable, which Python installation to be used, and in which Python installation PythonOCC should be installed
+- Allow an option to use Anaconda instead of conda-forge (consider using option 'conda-content-trust' to verify the signatures of the packages prior to installation)
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+## Revision History
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Acknowledgment
+The support of Yann Debray regading the MATLAB&reg; Python&trade; interoperability is kindly acknowledged herein
 
 ## License
-For open source projects, say how it is licensed.
+This open-source project is licensed using a [BSD license](https://en.wikipedia.org/wiki/BSD_licenses), see file ``LICENSE.md``
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Support
+Reach out to Andreas Apostolatos, PhD ([`aapostol@mathworks.com`](mailto:aapostol@mathworks.com)) for support with this project
+
+## References
+[1] Paviot, T. (2022). "pythonocc". Zenodo. [`https://doi.org/10.5281/zenodo.3605364`](https://doi.org/10.5281/zenodo.3605364)
+\
+\
+\
+*Copyright 2025 The MathWorks, Inc.*
