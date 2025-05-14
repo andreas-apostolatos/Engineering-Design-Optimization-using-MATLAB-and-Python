@@ -65,7 +65,7 @@ Firstly, open the project file ``Engineering-Design-Optimization-using-MATLAB-an
 
 ## Unit-testing framework
 To run the unit tests for this courseware, just type the following commands in the Command Window of MATLAB&reg;\
-``>> suite = matlab.unittest.TestSuite.fromProject("Engineering-Design-Optimization-using-MATLAB-and-Python.prj");``\
+``>> suite = matlab.unittest.TestSuite.fromProject("Engineering-Design-Optimization-using-MATLAB-and-Python-R25a.prj");``\
 ``>> run(suite)``\
 Alternatively, start the project and then run the file ``main_unitTests.mlx``
 
