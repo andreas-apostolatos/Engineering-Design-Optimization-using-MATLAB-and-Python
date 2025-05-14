@@ -27,7 +27,7 @@ This is the Live Script that executes the unit tests
 - **``Example1.mlx``**\
 This example highlights the necessary workflows for importing standard *Computer-Aided Design* (CAD) file formats (e.g. ``IGES``, ``STEP``-files) in MATLAB&reg;
 
-![Solid swingarm geometry](./images/Example%201%20Solid%20Swingarm%20Geometry.png)
+![Solid swingarm geometry](images/Example1_Solid_Swingarm_Geometry.png)
 <p>&nbsp;</p>
 
 - **``Example2.mlx``**\
