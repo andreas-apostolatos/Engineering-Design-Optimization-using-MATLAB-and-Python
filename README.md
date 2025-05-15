@@ -1,6 +1,6 @@
 # Workshop on Engineering Design Optimization using MATLAB&reg; and Python&trade;
 
-[![View Courseware on Finite Element Methods on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/125135-courseware-on-finite-element-methods) or [![Open in MATLAB&reg; Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=andreas-apostolatos/Engineering-Design-Optimization-using-MATLAB-and-Python&file=Engineering-Design-Optimization-using-MATLAB-and-Python.prj)
+[![View Courseware on Finite Element Methods on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/125135-courseware-on-finite-element-methods) or [![Open in MATLAB&reg; Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/Engineering-Design-Optimization-using-MATLAB-and-Python/blob/main/Engineering-Design-Optimization-using-MATLAB-and-Python.prj)
 
 ## Description ##
 
