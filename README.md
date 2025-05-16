@@ -21,9 +21,6 @@ This is the MATLAB&reg; project file which sets up all necessary dependencies in
 - **``Main.mlx``**\
 This is a reference document that can be used to navigate to the rest of the Live Scripts in the repository
 
-- **``main_unitTests.mlx``**\
-This is the Live Script that executes the unit tests
-
 - **``Example1.mlx``**\
 This example highlights the necessary workflows for importing standard *Computer-Aided Design* (CAD) file formats (e.g. ``IGES``, ``STEP``-files) in MATLAB&reg;
 
