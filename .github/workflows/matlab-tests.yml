@@ -24,13 +24,23 @@ jobs:
           products: >
             Partial_Differential_Equation_Toolbox
 
+      - name: Cache PythonOCC environment
+        id: cache-pythonocc
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/miniforge3
+          key: ${{ runner.os }}-miniforge-python312-pythonocc-7.8.1
+          
       - name: Install Miniforge
+        if: steps.cache-pythonocc.outputs.cache-hit != 'true'
         shell: bash
         run: |
           wget -q https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
           bash Miniforge3-Linux-x86_64.sh -b -p "$HOME/miniforge3"
 
       - name: Create PythonOCC environment
+        if: steps.cache-pythonocc.outputs.cache-hit != 'true'
         shell: bash
         run: |
           "$HOME/miniforge3/bin/conda" create -y \
