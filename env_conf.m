@@ -8,8 +8,12 @@ function geometryFunctions = env_conf(setupPython, isApp)
     % PythonOCC ver, with which the workshop was developed
     expVersionOCC = "7.8.1";
 
+    % Determine repository root and auxiliary functions path
+    repositoryRoot = fileparts(mfilename("fullpath"));
+    auxiliaryPath = fullfile(repositoryRoot, "auxiliary functions");
+
     % Ensure auxiliary functions are in the MATLAB path
-    ensurePath('auxiliary functions');
+    ensurePath(auxiliaryPath);
 
     % Determine environment
     homeDir = determineEnvironment();
@@ -51,12 +55,20 @@ function geometryFunctions = env_conf(setupPython, isApp)
 
         % Return geometry functions if setup correctly
         insert(py.sys.path, int32(0), fullfile("auxiliary functions"));
+
+        % Refresh Python's module lookup cache
+        py.importlib.invalidate_caches();
+
+        % Import geometryFunctions.py
         geometryFunctions = py.importlib.import_module('geometryFunctions');
     end
 end
 
 function ensurePath(folderName)
-    if ~contains(path, folderName)
+    folderName = char(folderName);
+
+    if ~contains([pathsep, path, pathsep], ...
+            [pathsep, folderName, pathsep])
         addpath(genpath(folderName));
         fprintf('Added "%s" to MATLAB path\n', folderName);
     end
