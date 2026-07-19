@@ -28,12 +28,14 @@ jobs:
           wget -q https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
           bash Miniforge3-Linux-x86_64.sh -b -p "$HOME/miniforge3"
 
-      - name: Install PythonOCC
+      - name: Create PythonOCC environment
         shell: bash
         run: |
-          "$HOME/miniforge3/bin/conda" install -y \
+          "$HOME/miniforge3/bin/conda" create -y \
+            -n pythonocc \
             -c conda-forge \
             --override-channels \
+            python=3.12 \
             pythonocc-core=7.8.1
 
       - name: Run MATLAB unit tests
@@ -44,7 +46,12 @@ jobs:
             addpath(pwd);
 
             pythonPath = fullfile( ...
-                getenv("HOME"), "miniforge3", "bin", "python3");
+                getenv("HOME"), ...
+                "miniforge3", ...
+                "envs", ...
+                "pythonocc", ...
+                "bin", ...
+                "python3");
 
             pyenv( ...
                 Version=pythonPath, ...
