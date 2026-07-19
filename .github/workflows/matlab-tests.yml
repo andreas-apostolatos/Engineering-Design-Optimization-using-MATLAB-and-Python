@@ -40,6 +40,13 @@ jobs:
             python=3.12 \
             pythonocc-core=7.8.1
 
+      - name: Inspect repository files
+        shell: bash
+        run: |
+          pwd
+          find "$GITHUB_WORKSPACE" -maxdepth 3 -type f | sort
+          ls -la "$GITHUB_WORKSPACE/auxiliary functions"
+          
       - name: Run MATLAB unit tests
         uses: matlab-actions/run-command@v2
         with:
