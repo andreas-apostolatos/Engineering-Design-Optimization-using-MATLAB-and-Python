@@ -24,13 +24,23 @@ jobs:
           products: >
             Partial_Differential_Equation_Toolbox
 
+      - name: Cache PythonOCC environment
+        id: cache-pythonocc
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/miniforge3
+          key: ${{ runner.os }}-miniforge-python312-pythonocc-7.8.1
+          
       - name: Install Miniforge
+        if: steps.cache-pythonocc.outputs.cache-hit != 'true'
         shell: bash
         run: |
           wget -q https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
           bash Miniforge3-Linux-x86_64.sh -b -p "$HOME/miniforge3"
 
       - name: Create PythonOCC environment
+        if: steps.cache-pythonocc.outputs.cache-hit != 'true'
         shell: bash
         run: |
           "$HOME/miniforge3/bin/conda" create -y \
@@ -47,13 +57,22 @@ jobs:
           find "$GITHUB_WORKSPACE" -maxdepth 3 -type f | sort
           ls -la "$GITHUB_WORKSPACE/auxiliary functions"
           
+      - name: Verify C++ runtime
+        shell: bash
+        run: |
+          test -f "$HOME/miniforge3/envs/pythonocc/lib/libstdc++.so.6"
+          strings "$HOME/miniforge3/envs/pythonocc/lib/libstdc++.so.6" \
+            | grep CXXABI_1.3.15
+          
       - name: Run MATLAB unit tests
         uses: matlab-actions/run-command@v2
+        env:
+          LD_PRELOAD: /home/runner/miniforge3/envs/pythonocc/lib/libstdc++.so.6
         with:
           command: |
             cd(getenv("GITHUB_WORKSPACE"));
             addpath(pwd);
-
+  
             pythonPath = fullfile( ...
                 getenv("HOME"), ...
                 "miniforge3", ...
@@ -61,14 +80,14 @@ jobs:
                 "pythonocc", ...
                 "bin", ...
                 "python3");
-
+  
             pyenv( ...
                 Version=pythonPath, ...
                 ExecutionMode="OutOfProcess");
-
+  
             suite = matlab.unittest.TestSuite.fromFolder( ...
                 "unit test", ...
                 "IncludingSubfolders", true);
-
+  
             results = run(suite);
             assertSuccess(results);
