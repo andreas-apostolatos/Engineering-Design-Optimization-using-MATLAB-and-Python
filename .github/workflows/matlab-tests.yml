@@ -26,8 +26,12 @@ jobs:
         uses: matlab-actions/run-command@v2
         with:
           command: |
+            cd(getenv("GITHUB_WORKSPACE"));
+            addpath(pwd);
+
             suite = matlab.unittest.TestSuite.fromFolder( ...
                 "unit test", ...
                 "IncludingSubfolders", true);
+
             results = run(suite);
             assertSuccess(results);
