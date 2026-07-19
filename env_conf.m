@@ -54,13 +54,13 @@ function geometryFunctions = env_conf(setupPython, isApp)
         end
 
         % Return geometry functions if setup correctly
-        py.sys.path.insert(int32(0), char(auxiliaryPath));
-
+        py.sys.path().insert(int32(0), char(auxiliaryPath));
+        
         % Refresh Python's module lookup cache
         py.importlib.invalidate_caches();
-
+        
         % Import geometryFunctions.py
-        geometryFunctions = py.importlib.import_module('geometryFunctions');
+        geometryFunctions = py.importlib.import_module("geometryFunctions");
     end
 end
 
