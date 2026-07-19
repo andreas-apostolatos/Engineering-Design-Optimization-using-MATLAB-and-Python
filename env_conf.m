@@ -59,6 +59,40 @@ function geometryFunctions = env_conf(setupPython, isApp)
         % Refresh Python's module lookup cache
         py.importlib.invalidate_caches();
 
+        %%% Debug
+
+        fprintf("\n--- Python import diagnostics ---\n");
+        fprintf("MATLAB current folder: %s\n", pwd);
+        fprintf("env_conf location: %s\n", mfilename("fullpath"));
+        fprintf("Auxiliary path: %s\n", auxiliaryPath);
+        fprintf("Auxiliary folder exists: %d\n", isfolder(auxiliaryPath));
+
+        geometryFile = fullfile(auxiliaryPath, "geometryFunctions.py");
+        fprintf("geometryFunctions.py exists: %d\n", isfile(geometryFile));
+        fprintf("geometryFunctions.py path: %s\n", geometryFile);
+
+        pythonEnvironment = pyenv;
+        fprintf("Python executable: %s\n", pythonEnvironment.Executable);
+        fprintf("Python status: %s\n", string(pythonEnvironment.Status));
+
+        insert(py.sys.path, int32(0), char(auxiliaryPath));
+        py.importlib.invalidate_caches();
+
+        fprintf("Python sys.path:\n");
+        pythonPaths = cell(py.sys.path);
+        disp(string(pythonPaths'));
+
+        moduleSpec = py.importlib.util.find_spec("geometryFunctions");
+
+        if isequal(moduleSpec, py.None)
+            error( ...
+                "env_conf:GeometryFunctionsNotFound", ...
+                "Python cannot locate geometryFunctions.py under: %s", ...
+                auxiliaryPath);
+        end
+
+        %%% Debug
+
         % Import geometryFunctions.py
         geometryFunctions = py.importlib.import_module('geometryFunctions');
     end
