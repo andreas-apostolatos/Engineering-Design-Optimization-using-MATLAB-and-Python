@@ -54,7 +54,7 @@ function geometryFunctions = env_conf(setupPython, isApp)
         end
 
         % Return geometry functions if setup correctly
-        insert(py.sys.path, int32(0), fullfile("auxiliary functions"));
+        py.sys.path.insert(int32(0), char(auxiliaryPath));
 
         % Refresh Python's module lookup cache
         py.importlib.invalidate_caches();
