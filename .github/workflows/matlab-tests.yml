@@ -47,13 +47,22 @@ jobs:
           find "$GITHUB_WORKSPACE" -maxdepth 3 -type f | sort
           ls -la "$GITHUB_WORKSPACE/auxiliary functions"
           
+      - name: Verify C++ runtime
+        shell: bash
+        run: |
+          test -f "$HOME/miniforge3/envs/pythonocc/lib/libstdc++.so.6"
+          strings "$HOME/miniforge3/envs/pythonocc/lib/libstdc++.so.6" \
+            | grep CXXABI_1.3.15
+          
       - name: Run MATLAB unit tests
         uses: matlab-actions/run-command@v2
+        env:
+          LD_PRELOAD: /home/runner/miniforge3/envs/pythonocc/lib/libstdc++.so.6
         with:
           command: |
             cd(getenv("GITHUB_WORKSPACE"));
             addpath(pwd);
-
+  
             pythonPath = fullfile( ...
                 getenv("HOME"), ...
                 "miniforge3", ...
@@ -61,14 +70,14 @@ jobs:
                 "pythonocc", ...
                 "bin", ...
                 "python3");
-
+  
             pyenv( ...
                 Version=pythonPath, ...
                 ExecutionMode="OutOfProcess");
-
+  
             suite = matlab.unittest.TestSuite.fromFolder( ...
                 "unit test", ...
                 "IncludingSubfolders", true);
-
+  
             results = run(suite);
             assertSuccess(results);
