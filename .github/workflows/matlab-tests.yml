@@ -22,12 +22,33 @@ jobs:
         with:
           release: R2024b
 
+      - name: Install Miniforge
+        shell: bash
+        run: |
+          wget -q https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+          bash Miniforge3-Linux-x86_64.sh -b -p "$HOME/miniforge3"
+
+      - name: Install PythonOCC
+        shell: bash
+        run: |
+          "$HOME/miniforge3/bin/conda" install -y \
+            -c conda-forge \
+            --override-channels \
+            pythonocc-core=7.8.1
+
       - name: Run MATLAB unit tests
         uses: matlab-actions/run-command@v2
         with:
           command: |
             cd(getenv("GITHUB_WORKSPACE"));
             addpath(pwd);
+
+            pythonPath = fullfile( ...
+                getenv("HOME"), "miniforge3", "bin", "python3");
+
+            pyenv( ...
+                Version=pythonPath, ...
+                ExecutionMode="OutOfProcess");
 
             suite = matlab.unittest.TestSuite.fromFolder( ...
                 "unit test", ...
